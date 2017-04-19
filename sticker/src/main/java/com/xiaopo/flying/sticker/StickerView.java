@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * TODO 找到只画3个icon的方法
+ * TODO 找到放大缩小方法
  * Sticker view
  * Created by snowbean on 16-8-2.
  */
@@ -120,7 +122,7 @@ public class StickerView extends FrameLayout {
     BitmapStickerIcon deleteIcon = new BitmapStickerIcon(
         ContextCompat.getDrawable(getContext(), R.drawable.sticker_ic_close_white_18dp),
         BitmapStickerIcon.LEFT_TOP);
-    deleteIcon.setIconEvent(new DeleteIconEvent());
+    deleteIcon.setIconEvent(new NonIconEvent());
     BitmapStickerIcon zoomIcon = new BitmapStickerIcon(
         ContextCompat.getDrawable(getContext(), R.drawable.sticker_ic_scale_white_18dp),
         BitmapStickerIcon.RIGHT_BOTOM);
@@ -128,7 +130,7 @@ public class StickerView extends FrameLayout {
     BitmapStickerIcon flipIcon = new BitmapStickerIcon(
         ContextCompat.getDrawable(getContext(), R.drawable.sticker_ic_flip_white_18dp),
         BitmapStickerIcon.RIGHT_TOP);
-    flipIcon.setIconEvent(new FlipHorizontallyEvent());
+    flipIcon.setIconEvent(new DeleteIconEvent());
 
     icons.clear();
     icons.add(deleteIcon);
@@ -201,6 +203,7 @@ public class StickerView extends FrameLayout {
               configIconMatrix(icon, x4, y4, rotation);
               break;
           }
+          if(icon.getPosition()==BitmapStickerIcon.LEFT_TOP) continue;//判断如果是左上角不画
           icon.draw(canvas, borderPaint);
         }
       }
@@ -372,8 +375,8 @@ public class StickerView extends FrameLayout {
   public void zoomAndRotateSticker(Sticker sticker, MotionEvent event) {
     if (sticker != null) {
       float newDistance = calculateDistance(midPoint.x, midPoint.y, event.getX(), event.getY());
-      float newRotation = calculateRotation(midPoint.x, midPoint.y, event.getX(), event.getY());
-
+//      float newRotation = calculateRotation(midPoint.x, midPoint.y, event.getX(), event.getY());
+      float newRotation = oldRotation;
       moveMatrix.set(downMatrix);
       moveMatrix.postScale(newDistance / oldDistance, newDistance / oldDistance, midPoint.x,
           midPoint.y);
