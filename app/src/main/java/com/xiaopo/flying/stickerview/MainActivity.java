@@ -20,6 +20,7 @@ import com.xiaopo.flying.sticker.BitmapStickerIcon;
 import com.xiaopo.flying.sticker.DeleteIconEvent;
 import com.xiaopo.flying.sticker.DrawableSticker;
 import com.xiaopo.flying.sticker.FlipHorizontallyEvent;
+import com.xiaopo.flying.sticker.NonIconEvent;
 import com.xiaopo.flying.sticker.Sticker;
 import com.xiaopo.flying.sticker.StickerView;
 import com.xiaopo.flying.sticker.TextSticker;
@@ -46,9 +47,9 @@ public class MainActivity extends AppCompatActivity {
     //currently you can config your own icons and icon event
     //the event you can custom
     BitmapStickerIcon deleteIcon = new BitmapStickerIcon(ContextCompat.getDrawable(this,
-        com.xiaopo.flying.sticker.R.drawable.sticker_ic_close_white_18dp),
+        com.xiaopo.flying.sticker.R.drawable.sticker_ic_flip_white_18dp),
         BitmapStickerIcon.LEFT_TOP);
-    deleteIcon.setIconEvent(new DeleteIconEvent());
+    deleteIcon.setIconEvent(new NonIconEvent());
 
     BitmapStickerIcon zoomIcon = new BitmapStickerIcon(ContextCompat.getDrawable(this,
         com.xiaopo.flying.sticker.R.drawable.sticker_ic_scale_white_18dp),
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     zoomIcon.setIconEvent(new ZoomIconEvent());
 
     BitmapStickerIcon flipIcon = new BitmapStickerIcon(ContextCompat.getDrawable(this,
-        com.xiaopo.flying.sticker.R.drawable.sticker_ic_flip_white_18dp),
+        com.xiaopo.flying.sticker.R.drawable.sticker_ic_close_white_18dp),
         BitmapStickerIcon.RIGHT_TOP);
     flipIcon.setIconEvent(new DeleteIconEvent());
 
