@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     BitmapStickerIcon flipIcon = new BitmapStickerIcon(ContextCompat.getDrawable(this,
         com.xiaopo.flying.sticker.R.drawable.sticker_ic_flip_white_18dp),
         BitmapStickerIcon.RIGHT_TOP);
-    flipIcon.setIconEvent(new FlipHorizontallyEvent());
+    flipIcon.setIconEvent(new DeleteIconEvent());
 
     BitmapStickerIcon heartIcon =
         new BitmapStickerIcon(ContextCompat.getDrawable(this, R.drawable.ic_favorite_white_24dp),
